@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquitectura Moderna | Diseños Contemporáneos</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header y navegación */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #222;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #e67e22;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #e67e22;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            margin-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #e67e22;
+            color: #fff;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 2px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #d35400;
+        }
+        
+        /* Sección de proyectos */
+        .section-title {
+            text-align: center;
+            margin: 80px 0 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #222;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #e67e22;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+        
+        .project {
+            background: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .project:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .project p {
+            color: #777;
+            margin-bottom: 15px;
+        }
+        
+        /* Sección sobre nosotros */
+        .about {
+            background: #fff;
+            padding: 80px 0;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Sección de servicios */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .service {
+            text-align: center;
+            padding: 30px;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service i {
+            font-size: 2.5rem;
+            color: #e67e22;
+            margin-bottom: 20px;
+        }
+        
+        .service h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #222;
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #e67e22;
+        }
+        
+        .footer-section p, .footer-section li {
+            margin-bottom: 10px;
+            color: #bbb;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #e67e22;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">Modern<span>Arch</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Diseño Arquitectónico Moderno</h1>
+            <p>Creando espacios innovadores que transforman la manera en que vivimos y trabajamos.</p>
+            <a href="#proyectos" class="btn">Ver Proyectos</a>
+        </div>
+    </section>
+
+    <!-- Proyectos Section -->
+    <section id="proyectos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Proyectos Destacados</h2>
+            </div>
+            <div class="projects">
+                <div class="project">
+                    <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Casa Moderna">
+                    <div class="project-content">
+                        <h3>Villa Contemporánea</h3>
+                        <p>Diseño residencial con enfoque en la integración de espacios interiores y exteriores.</p>
+                        <a href="#" class="btn">Ver Detalles</a>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Edificio Oficinas">
+                    <div class="project-content">
+                        <h3>Torre Empresarial</h3>
+                        <p>Complejo de oficinas con diseño sostenible y eficiencia energética.</p>
+                        <a href="#" class="btn">Ver Detalles</a>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Interior Moderno">
+                    <div class="project-content">
+                        <h3>Interiores Minimalistas</h3>
+                        <p>Diseño de interiores con enfoque en la funcionalidad y estética limpia.</p>
+                        <a href="#" class="btn">Ver Detalles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros Section -->
+    <section id="nosotros" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Nosotros</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Innovación en Diseño Arquitectónico</h2>
+                    <p>Somos un estudio de arquitectura especializado en diseños modernos y contemporáneos. Nuestra filosofía se basa en crear espacios funcionales, estéticos y sostenibles que mejoren la calidad de vida de las personas.</p>
+                    <p>Con más de 15 años de experiencia, hemos desarrollado proyectos residenciales, comerciales e institucionales que destacan por su innovación y atención al detalle.</p>
+                    <a href="#" class="btn">Conoce Más</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Equipo de Arquitectura">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Section -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service">
+                    <i>🏠</i>
+                    <h3>Diseño Residencial</h3>
+                    <p>Creación de viviendas modernas y funcionales adaptadas a las necesidades de cada cliente.</p>
+                </div>
+                <div class="service">
+                    <i>🏢</i>
+                    <h3>Arquitectura Comercial</h3>
+                    <p>Diseño de espacios comerciales y oficinas que optimizan la productividad y experiencia del usuario.</p>
+                </div>
+                <div class="service">
+                    <i>📐</i>
+                    <h3>Planificación Urbana</h3>
+                    <p>Desarrollo de proyectos urbanísticos sostenibles y comunidades integradas.</p>
+                </div>
+                <div class="service">
+                    <i>🌿</i>
+                    <h3>Diseño Sostenible</h3>
+                    <p>Incorporación de principios ecológicos y eficiencia energética en todos nuestros proyectos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ModernArch</h3>
+                    <p>Estudio de arquitectura especializado en diseños modernos y contemporáneos.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📱 +34 123 456 789</p>
+                    <p>✉️ info@modernarch.com</p>
+                    <p>📍 Calle Modernidad 123, Barcelona, España</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#proyectos">Proyectos</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ModernArch - Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
